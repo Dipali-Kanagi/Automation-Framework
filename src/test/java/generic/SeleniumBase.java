@@ -1,7 +1,10 @@
 package generic;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -44,7 +47,7 @@ public class SeleniumBase {
 
 		}
 	}
-	public void identifyElement(String address, locator type) {
+	public WebElement identifyElement(String address, locator type) {
 		 By by = null;
 		switch(type) {
 		case id:by = By.id(address);
@@ -65,7 +68,31 @@ public class SeleniumBase {
 		break;
 		
 		}
-		driver.findElement(by);
+		return driver.findElement(by);
+				
+	}
+	public List<WebElement> identifyElements(String address, locator type) {
+		 By by = null;
+		switch(type) {
+		case id:by = By.id(address);
+		break;
+		case className: by = By.className(address);
+		break;
+		case css: by = By.cssSelector(address);
+		break;
+		case linkText : by = By.linkText(address);
+		break;
+		case partialLinkText : by =By.partialLinkText(address);
+		break;
+		case xpath : by = By.xpath(address);
+		break;
+		case name : by = By.name(address);
+		break;
+		case tagName : by = By.tagName(address);
+		break;
+		
+		}
+		return driver.findElements(by);
 				
 	}
 	
