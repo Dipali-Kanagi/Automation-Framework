@@ -55,6 +55,7 @@ public class SeleniumBase extends Base{
 		}
 		return result;
 	}
+	
 
 	public WebElement identifyElement(String address, locator type) {
 		By by = null;

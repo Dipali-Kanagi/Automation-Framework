@@ -12,9 +12,11 @@ public class HomePage extends SeleniumBase {
 	private List<WebElement> getAllLinks() {
 		return super.identifyElements(tagNameHomePageLinks, locator.tagName);
 		
+		
 	}
 	public int getCountOfAllLinks() {
 		return this.getAllLinks().size();
 		
 	}
+	
 }
