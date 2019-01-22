@@ -13,7 +13,7 @@ public class SeleniumBase extends Base{
 
 	WebDriver driver;
 
-	enum locator {
+	protected enum locator {
 		id, name, className, tagName, linkText, partialLinkText, xpath, css
 	};
 
@@ -22,16 +22,16 @@ public class SeleniumBase extends Base{
 		if (browserName.equalsIgnoreCase("chrome")) {
 
 			System.setProperty("webdriver.chrome.driver",
-					super.getAndConcatPath("\\src\\test\\java\\drivers\\chromedriver.exe"));
+					super.getAndConcatPath("\\drivers\\chromedriver.exe"));
 			driver = new ChromeDriver();
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			System.setProperty("webdriver.gecko.driver",
-					super.getAndConcatPath("\\src\\test\\java\\drivers\\geckodriver.exe"));
+					super.getAndConcatPath("\\drivers\\geckodriver.exe"));
 			driver = new FirefoxDriver();
 		} else if (browserName.equalsIgnoreCase("ie")) {
 			System.setProperty("webdriver.ie.driver",
-					super.getAndConcatPath("\\src\\test\\java\\drivers\\IEDriverServer.exe"));
+					super.getAndConcatPath("\\drivers\\IEDriverServer.exe"));
 			driver = new InternetExplorerDriver();
 		}
 		driver.get(url);
@@ -46,6 +46,14 @@ public class SeleniumBase extends Base{
 			driver.close();
 
 		}
+	}
+	public  String getPageDetails(String type) {
+		String result= type;
+		if(type.equalsIgnoreCase("currenturl")) {
+			result = driver.getCurrentUrl();
+			
+		}
+		return result;
 	}
 
 	public WebElement identifyElement(String address, locator type) {

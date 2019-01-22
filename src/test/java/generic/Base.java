@@ -9,6 +9,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import junit.framework.Assert;
+
 public class Base {
 	
 	public String getAndConcatPath(String path) {
@@ -28,5 +30,9 @@ public class Base {
 			FileOutputStream writetofile = new FileOutputStream(file);
 			work.write(writetofile);
 			work.close();
+	}
+	public void compareValues(Object actualValue, Object expectedValue) {
+		Assert.assertEquals(expectedValue, actualValue);
+		Assert.assertEquals(actualValue+ "doesnt match with"+ expectedValue, expectedValue, actualValue);
 	}
 }
