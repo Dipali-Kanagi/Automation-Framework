@@ -31,6 +31,11 @@ public class HomeStepDef extends HomePage{
 		Integer actualValue = super.getCountOfAllLinks();
 		super.compareValues(actualValue, expectedCount);
 	}
+	@Then("click on {string} link")
+	public void click_on_link(String string) {
+	    // Write code here that turns the phrase above into concrete actions
+		super.clickLink(string);
+	}
 
 
 

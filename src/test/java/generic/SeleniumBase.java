@@ -16,6 +16,9 @@ public class SeleniumBase extends Base{
 	protected enum locator {
 		id, name, className, tagName, linkText, partialLinkText, xpath, css
 	};
+	protected enum actionType{
+		click
+	};
 
 	public void launchApplication(String browserName, String url) {
 
@@ -55,6 +58,17 @@ public class SeleniumBase extends Base{
 		}
 		return result;
 	}
+	public void performAction(actionType type,WebElement element)
+	{
+		switch(type)
+		{
+		case click:
+			element.click();
+			break;
+		
+		}
+		
+	}
 	
 
 	public WebElement identifyElement(String address, locator type) {
@@ -84,6 +98,7 @@ public class SeleniumBase extends Base{
 		case tagName:
 			by = By.tagName(address);
 			break;
+			
 
 		}
 		return driver.findElement(by);

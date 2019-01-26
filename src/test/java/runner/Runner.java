@@ -9,7 +9,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		features="src/test/java/testcases",
 		glue="stepdef",
-		tags= {"@home"},
+		tags= {"@Link"},
 		monochrome=true,
 		dryRun=false // it 
 		)
