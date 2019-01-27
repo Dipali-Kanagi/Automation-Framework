@@ -1,8 +1,14 @@
 package generic;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.compress.compressors.FileNameUtil;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -68,6 +74,17 @@ public class SeleniumBase extends Base{
 		
 		}
 		
+	}
+	
+	public void captureScreenshot(String filename)  {
+		TakesScreenshot ts = (TakesScreenshot)driver;//casting
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(source, new File("./Screenshot/" + filename + ".png") );
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

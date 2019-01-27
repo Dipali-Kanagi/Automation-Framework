@@ -1,5 +1,7 @@
 package stepdef;
 
+import cucumber.api.Scenario;
+import cucumber.api.java.After;
 import cucumber.api.java.en.*;
 import generic.SeleniumBase;
 import pageobject.HomePage;
@@ -12,10 +14,12 @@ public class HomeStepDef extends HomePage{
 		super.launchApplication(string, string2);
 	}
 
-	@Then("user can close browser")
-	public void user_can_close_browser() {
+	@After 
+	public void user_can_close_browser(Scenario obj) {
 	    // Write code here that turns the phrase above into concrete actions
-	   super.closeapplicaiton(false);
+		
+		super.captureScreenshot(obj.getName());
+		super.closeapplicaiton(false);
 	}
 	@Then("verify page by {string} as  {string}")
 	public void verify_page_by_as(String string, String expectedValue) {
